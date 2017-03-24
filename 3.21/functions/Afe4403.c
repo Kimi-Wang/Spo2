@@ -111,7 +111,7 @@ unsigned int spiReadByte(unsigned char *data)
 	unsigned char recv_data[4] = {0};
 	unsigned char error = 0;
 	
-	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 1, (unsigned char *)recv_data, 4);
+	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 4, (unsigned char *)recv_data, 4);
 	if(error != 0)
 	{
 		SEGGER_RTT_printf(0,"SPI operation error %d \r\n", error);
@@ -127,6 +127,7 @@ unsigned int spiReadByte(unsigned char *data)
 	value = recv_data[3];
 	value = (value << 8) + recv_data[2];
 	value = (value << 8) + recv_data[1];
+	value = (value << 8) + recv_data[0];
 	
     return value;
 }
@@ -225,7 +226,8 @@ static void writeRegister(unsigned char address, unsigned long data)
 static unsigned int readRegister(unsigned char address)
 {
 	unsigned char nullVale[4] = {0};
-
+	nullVale[0] = address;
+	
     unsigned int spiReceive=0;
 
     chipSelectLow();
@@ -290,13 +292,13 @@ static void afe4403Reset(void)
 	
 	nrf_gpio_pin_set(AFE_RESETZ);
 	
-	if(nrf_gpio_pin_read(AFE_DIAG_END) == 0)
-	{
-		unsigned int Diag_value = 0;
-		Diag_value = readDiagnostics();
-		SEGGER_RTT_printf(0, "Diag_value: 0x%x\r\n", (Diag_value));
+//	if(nrf_gpio_pin_read(AFE_DIAG_END) == 1)
+//	{
+//		unsigned int Diag_value = 0;
+//		Diag_value = readDiagnostics();
+//		SEGGER_RTT_printf(0, "Diag_value: 0x%x\r\n", (Diag_value));
 
-	}
+//	}
 }
 
 /***************************************************************************************************
@@ -449,7 +451,7 @@ void afe4403Init(void)
     
     enableWrite();
   
-	afe4403DefaultRegInit();
+//	afe4403DefaultRegInit();
 	
     writeRegister(0x01,0x00123456);
 	
