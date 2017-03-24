@@ -80,11 +80,6 @@ static void afe4403GpioInit(void)
 	nrf_gpio_cfg_output(AFE_SPISET);//4403片选
 	nrf_gpio_cfg_output(AFE_RESETZ);//4403复位引脚，低有效
 	nrf_gpio_cfg_output(AFE_LED_EN);//电压转换芯片使能脚
-	
-	nrf_gpio_cfg_input(SPI_MISO_PIN, NRF_GPIO_PIN_NOPULL);
-	nrf_gpio_cfg_output(SPI_MOSI_PIN);
-	nrf_gpio_cfg_output(SPI_SCK_PIN);
-	
 }
 
 /***************************************************************************************************
@@ -107,101 +102,55 @@ static void afe4403SpiInit(void)
 
 /***************************************************************************************************
 * 功能描述:
-*          SPI读写一个字节
+*          SPI读一个字节
 * 参数说明：
 * 返回值：
 **************************************************************************************************/
-unsigned int spiReadWriteByte(unsigned char *data)
+unsigned int spiReadByte(unsigned char *data)
 {	
 	unsigned char recv_data[4] = {0};
 	unsigned char error = 0;
 	
-	unsigned int value = 0;	
-	
-	int i = 4;
-	int a = 0;
-	
-	unsigned char *tmp =  data;
-	
-	while( i-- )
+	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 1, (unsigned char *)recv_data, 4);
+	if(error != 0)
 	{
-		char tmp_value =  *data;
-		
-		nrf_gpio_pin_clear(SPI_SS_PIN);
-		
-		for(a =0 ;a<8 ;a++)
-		{
-			nrf_gpio_pin_clear(SPI_SCK_PIN);			
-			
-			if(nrf_gpio_pin_read(SPI_MISO_PIN) == 0)
-			{
-				recv_data[3-i] = ((recv_data[3-i] << 1) + 0x00);
-			}
-			else
-			{
-				recv_data[3-i] = ((recv_data[3-i] << 1) + 0x01);
-			}
-			
-			
-			if((tmp_value & 0x80 ) == 0 )
-			{
-				nrf_gpio_pin_clear(SPI_MOSI_PIN);
-			}
-			else
-			{
-				nrf_gpio_pin_set(SPI_MOSI_PIN);
-			}
-
-			nrf_gpio_pin_set(SPI_SCK_PIN);
-			
-			tmp_value <<= 1;		
-
-		}
-			nrf_gpio_pin_clear(SPI_SCK_PIN);
-			nrf_gpio_pin_set(SPI_SS_PIN);
-		
-			if(nrf_gpio_pin_read(SPI_MISO_PIN) == 0)
-			{
-				recv_data[3-i] = ((recv_data[3-i] << 1) + 0x00);
-			}
-			else
-			{
-				recv_data[3-i] = ((recv_data[3-i] << 1) + 0x01);
-			}
-		
-		data++;
+		SEGGER_RTT_printf(0,"SPI operation error %d \r\n", error);
 	}
 	
-//	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 4, (unsigned char *)recv_data, 4);
-//	if(error != 0)
-//	{
-//		SEGGER_RTT_printf(0,"SPI operation error %d \r\n", error);
-//	}//	
-
-//	
-	SEGGER_RTT_printf(0,"<----------------------------------> \r\n");
+	SEGGER_RTT_printf(0, "recv_data[0] :%02x \r\n", recv_data[0]);
+	SEGGER_RTT_printf(0, "recv_data[1] :%02x \r\n", recv_data[1]);
+	SEGGER_RTT_printf(0, "recv_data[2] :%02x \r\n", recv_data[2]);
+	SEGGER_RTT_printf(0, "recv_data[3] :%02x \r\n", recv_data[3]);
 	
-	SEGGER_RTT_printf(0,"send_data[0] %02x \r\n", tmp[0]);
-	SEGGER_RTT_printf(0,"send_data[1] %02x \r\n", tmp[1]);	
-	SEGGER_RTT_printf(0,"send_data[2] %02x \r\n", tmp[2]);
-	SEGGER_RTT_printf(0,"send_data[3] %02x \r\n", tmp[3]);
+	unsigned int value = 0;
 	
-	SEGGER_RTT_printf(0,"\r\n");
-	
-	SEGGER_RTT_printf(0,"recv_data[0] %02x \r\n", recv_data[0]);
-	SEGGER_RTT_printf(0,"recv_data[1] %02x \r\n", recv_data[1]);	
-	SEGGER_RTT_printf(0,"recv_data[2] %02x \r\n", recv_data[2]);
-	SEGGER_RTT_printf(0,"recv_data[3] %02x \r\n", recv_data[3]);
-	
-	SEGGER_RTT_printf(0,"<----------------------------------> \r\n");
-	
-	value = recv_data[0];
-	value = (value << 8) + recv_data[1];
+	value = recv_data[3];
 	value = (value << 8) + recv_data[2];
-	value = (value << 8) + recv_data[3];
+	value = (value << 8) + recv_data[1];
 	
     return value;
 }
+
+/***************************************************************************************************
+* 功能描述:
+*          SPI写一个字节
+* 参数说明：
+* 返回值：
+**************************************************************************************************/
+unsigned int spiWriteByte(unsigned char *data)
+{	
+	unsigned char recv_data[4] = {0};
+	unsigned char error = 0;
+	
+	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 4, NULL, 0);
+	if(error != 0)
+	{
+		SEGGER_RTT_printf(0,"SPI operation error %d \r\n", error);
+	}
+	
+    return 0;
+}
+
 
 /***************************************************************************************************
 * 功能描述:
@@ -255,9 +204,14 @@ static void writeRegister(unsigned char address, unsigned long data)
     writeData[2] = (unsigned char)(data >> 8);
     writeData[3] = (unsigned char)data;
 	
+	SEGGER_RTT_printf(0, "writeData[0] : %02x \r\n", writeData[0]);
+	SEGGER_RTT_printf(0, "writeData[1] : %02x \r\n", writeData[1]);
+	SEGGER_RTT_printf(0, "writeData[2] : %02x \r\n", writeData[2]);
+	SEGGER_RTT_printf(0, "writeData[3] : %02x \r\n", writeData[3]);
+	
     chipSelectLow();
 	
-	spiReadWriteByte(writeData);
+	spiWriteByte(writeData);
 
     chipSelectHigh();
 }
@@ -276,7 +230,7 @@ static unsigned int readRegister(unsigned char address)
 
     chipSelectLow();
 
-    spiReceive = spiReadWriteByte(nullVale);
+    spiReceive = spiReadByte(nullVale);
 
     chipSelectHigh();    // Combine the three received bytes into a signed long
 
@@ -487,7 +441,7 @@ void afe4403Init(void)
 {
     afe4403GpioInit();	
     
-//    afe4403SpiInit();
+    afe4403SpiInit();
     
     afe4403Reset();
     
@@ -495,15 +449,13 @@ void afe4403Init(void)
     
     enableWrite();
   
-//	afe4403DefaultRegInit();
+	afe4403DefaultRegInit();
 	
-    writeRegister(0x01,0x00012345);
+    writeRegister(0x01,0x00123456);
 	
     enableRead();
 	
 	int value = 0;
 	value = readRegister(0x01);
-
-	SEGGER_RTT_printf(0,"recv_value : 0x%04x \r\n",value);
-	
+	SEGGER_RTT_printf(0,"value : 0x%04x \r\n",value);	
 }
