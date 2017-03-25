@@ -30,3 +30,4 @@
 .\objects\app_scheduler.o: ..\..\..\..\..\..\components\libraries\util\nrf_assert.h
 .\objects\app_scheduler.o: ..\..\..\..\..\..\components\libraries\util\app_util_platform.h
 .\objects\app_scheduler.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
+.\objects\app_scheduler.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

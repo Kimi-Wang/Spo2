@@ -643,34 +643,34 @@ libraries\uart -I..\..\..\..\..\..\components\libraries\util -I..\..\..\..\..\.
 .\components\softdevice\common\softdevice_handler -I..\..\..\..\..\..\component
 s\softdevice\s132\headers -I..\..\..\..\..\..\components\softdevice\s132\header
 s\nrf52 -I..\..\..\..\..\..\components\toolchain -I..\..\..\..\..\bsp -I..\conf
-ig -I..\..\..\..\..\..\functions -IC:\Users\wang\Desktop\3.21\src\utils\project
-\eval\s132\keil\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Ke
-il_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.7.1\Device\Include -I
-C:\Keil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.9.0\Device\Inclu
-de --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 513" --p
+ig -I..\..\..\..\..\..\functions -IE:\git_repository\3.21\src\utils\project\eva
+l\s132\keil\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v
+5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.7.1\Device\Include -IC:\K
+eil_v5\ARM\PACK\NordicSemiconductor\nRF_DeviceFamilyPack\8.9.0\Device\Include -
+-predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 513" --prede
 
 
 
 ARM Macro Assembler    Page 11 
 
 
-redefine="_RTE_ SETA 1" --predefine="NRF52 SETA 1" --predefine="BLE_STACK_SUPPO
-RT_REQD SETA 1" --predefine="S132 SETA 1" --predefine="NRF_SD_BLE_API_VERSION S
-ETA 3" --predefine="BOARD_PCA10040 SETA 1" --predefine="NRF52_PAN_12 SETA 1" --
-predefine="NRF52_PAN_15 SETA 1" --predefine="NRF52_PAN_20 SETA 1" --predefine="
-NRF52_PAN_30 SETA 1" --predefine="NRF52_PAN_31 SETA 1" --predefine="NRF52_PAN_3
-6 SETA 1" --predefine="NRF52_PAN_51 SETA 1" --predefine="NRF52_PAN_53 SETA 1" -
--predefine="NRF52_PAN_54 SETA 1" --predefine="NRF52_PAN_55 SETA 1" --predefine=
-"NRF52_PAN_58 SETA 1" --predefine="NRF52_PAN_62 SETA 1" --predefine="NRF52_PAN_
-63 SETA 1" --predefine="NRF52_PAN_64 SETA 1" --predefine="CONFIG_GPIO_AS_PINRES
-ET SETA 1" --predefine="SOFTDEVICE_PRESENT SETA 1" --predefine="NRF52832 SETA 1
-" --predefine="NRF52 SETA 1" --predefine="SWI_DISABLE0 SETA 1" --cpreproc_opts=
--DBLE_STACK_SUPPORT_REQD,-DS132,-DNRF_SD_BLE_API_VERSION=3,-DBOARD_PCA10040,-DN
-RF52_PAN_12,-DNRF52_PAN_15,-DNRF52_PAN_20,-DNRF52_PAN_30,-DNRF52_PAN_31,-DNRF52
-_PAN_36,-DNRF52_PAN_51,-DNRF52_PAN_53,-DNRF52_PAN_54,-DNRF52_PAN_55,-DNRF52_PAN
-_58,-DNRF52_PAN_62,-DNRF52_PAN_63,-DNRF52_PAN_64,-DCONFIG_GPIO_AS_PINRESET,-DSO
-FTDEVICE_PRESENT,-DNRF52832,-DNRF52,-DSWI_DISABLE0 --list=.\listings\arm_startu
-p_nrf52.lst RTE\Device\nRF52832_xxAA\arm_startup_nrf52.s
+fine="_RTE_ SETA 1" --predefine="NRF52 SETA 1" --predefine="BLE_STACK_SUPPORT_R
+EQD SETA 1" --predefine="S132 SETA 1" --predefine="NRF_SD_BLE_API_VERSION SETA 
+3" --predefine="BOARD_PCA10040 SETA 1" --predefine="NRF52_PAN_12 SETA 1" --pred
+efine="NRF52_PAN_15 SETA 1" --predefine="NRF52_PAN_20 SETA 1" --predefine="NRF5
+2_PAN_30 SETA 1" --predefine="NRF52_PAN_31 SETA 1" --predefine="NRF52_PAN_36 SE
+TA 1" --predefine="NRF52_PAN_51 SETA 1" --predefine="NRF52_PAN_53 SETA 1" --pre
+define="NRF52_PAN_54 SETA 1" --predefine="NRF52_PAN_55 SETA 1" --predefine="NRF
+52_PAN_58 SETA 1" --predefine="NRF52_PAN_62 SETA 1" --predefine="NRF52_PAN_63 S
+ETA 1" --predefine="NRF52_PAN_64 SETA 1" --predefine="CONFIG_GPIO_AS_PINRESET S
+ETA 1" --predefine="SOFTDEVICE_PRESENT SETA 1" --predefine="NRF52832 SETA 1" --
+predefine="NRF52 SETA 1" --predefine="SWI_DISABLE0 SETA 1" --cpreproc_opts=-DBL
+E_STACK_SUPPORT_REQD,-DS132,-DNRF_SD_BLE_API_VERSION=3,-DBOARD_PCA10040,-DNRF52
+_PAN_12,-DNRF52_PAN_15,-DNRF52_PAN_20,-DNRF52_PAN_30,-DNRF52_PAN_31,-DNRF52_PAN
+_36,-DNRF52_PAN_51,-DNRF52_PAN_53,-DNRF52_PAN_54,-DNRF52_PAN_55,-DNRF52_PAN_58,
+-DNRF52_PAN_62,-DNRF52_PAN_63,-DNRF52_PAN_64,-DCONFIG_GPIO_AS_PINRESET,-DSOFTDE
+VICE_PRESENT,-DNRF52832,-DNRF52,-DSWI_DISABLE0 --list=.\listings\arm_startup_nr
+f52.lst RTE\Device\nRF52832_xxAA\arm_startup_nrf52.s
 
 
 

@@ -18,7 +18,18 @@ static const nrf_drv_twi_t m_twi = NRF_DRV_TWI_INSTANCE(TWI_INSTANCE_ID);
 * 参数说明：
 * 返回值：
 **************************************************************************************************/
-static void spiInit()
+static void spiHandle(nrf_drv_twi_evt_t const * p_event, void * p_context)
+{
+	
+}
+
+/***************************************************************************************************
+* 功能描述:
+*          spi初始化
+* 参数说明：
+* 返回值：
+**************************************************************************************************/
+static void twiInit()
 {
 	ret_code_t err_code;
 
@@ -30,7 +41,7 @@ static void spiInit()
        .clear_bus_init     = false
     };
 
-    err_code = nrf_drv_twi_init(&m_twi, &twi_config, NULL, NULL);
+    err_code = nrf_drv_twi_init(&m_twi, &twi_config, spiHandle, NULL);
     APP_ERROR_CHECK(err_code);
 	
     nrf_drv_twi_enable(&m_twi);	
@@ -44,17 +55,16 @@ static void spiInit()
 **************************************************************************************************/
 void G_sensorInit(void)
 {
-	spiInit();
+	twiInit();
 	
-	unsigned char value = 0x85;
-	
+//	unsigned char value = 0x85;
+//	
 //	value = nrf_drv_twi_tx(&m_twi, 0x08, (const uint8_t *)&value, 1, false);
 //	
-//	SEGGER_RTT_printf(0," value : %d\r\n", value);
+//	SEGGER_RTT_printf(0," value : %d\r\n", value);	
 //	
 //	
-//	
-//	value = nrf_drv_twi_tx(&m_twi, 0x08, (const uint8_t *)&value, 1, false);
+//	value = nrf_drv_twi_rx(&m_twi, 0x08, (uint8_t *)&value, 1);
 //		
 //	SEGGER_RTT_printf(0," value : %d\r\n", value);
 }

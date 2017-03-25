@@ -8,6 +8,10 @@
 
 #endif
 
+//#ifndef SOFTDEVICE_PRESENT
+//#define SOFTDEVICE_PRESENT 1
+
+//#endif 
 // <h> nRF_BLE 
 
 //==========================================================

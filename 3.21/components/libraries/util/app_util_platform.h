@@ -29,8 +29,11 @@
 #include "nrf_soc.h"
 #include "nrf_nvic.h"
 #endif
+
 #include "nrf_assert.h"
 #include "app_error.h"
+
+#include "SEGGER_RTT.h"
 
 #ifdef __cplusplus
 extern "C" {

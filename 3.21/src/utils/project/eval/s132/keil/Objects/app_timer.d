@@ -30,6 +30,7 @@
 .\objects\app_timer.o: ..\..\..\..\..\..\components\libraries\util\app_util_platform.h
 .\objects\app_timer.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
 .\objects\app_timer.o: ..\..\..\..\..\..\components\libraries\util\nrf_assert.h
+.\objects\app_timer.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\app_timer.o: ..\..\..\..\..\..\components\libraries\util\sdk_common.h
 .\objects\app_timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\app_timer.o: ..\..\..\..\..\..\components\libraries\util\sdk_os.h

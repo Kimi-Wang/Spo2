@@ -31,6 +31,7 @@
 .\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_svc.h
 .\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_error_soc.h
 .\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
+.\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\softdevice\common\softdevice_handler\softdevice_handler.h
 .\objects\nrf_drv_clock.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\nrf_drv_clock.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_sdm.h

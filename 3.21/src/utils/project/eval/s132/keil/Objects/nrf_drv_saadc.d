@@ -31,3 +31,4 @@
 .\objects\nrf_drv_saadc.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_svc.h
 .\objects\nrf_drv_saadc.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_error_soc.h
 .\objects\nrf_drv_saadc.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
+.\objects\nrf_drv_saadc.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

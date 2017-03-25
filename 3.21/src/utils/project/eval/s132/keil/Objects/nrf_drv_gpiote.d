@@ -34,3 +34,4 @@
 .\objects\nrf_drv_gpiote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\nrf_drv_gpiote.o: ..\..\..\..\..\..\components\libraries\util\nordic_common.h
 .\objects\nrf_drv_gpiote.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\nrf_drv_gpiote.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

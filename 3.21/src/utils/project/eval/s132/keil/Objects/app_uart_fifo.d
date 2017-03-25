@@ -27,6 +27,7 @@
 .\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\libraries\util\sdk_errors.h
 .\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\libraries\util\nordic_common.h
 .\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\libraries\fifo\app_fifo.h
 .\objects\app_uart_fifo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\app_uart_fifo.o: ..\..\..\..\..\..\components\drivers_nrf\uart\nrf_drv_uart.h

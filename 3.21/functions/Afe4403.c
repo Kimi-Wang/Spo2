@@ -139,11 +139,11 @@ unsigned int spiReadByte(unsigned char *data)
 * ∑µªÿ÷µ£∫
 **************************************************************************************************/
 unsigned int spiWriteByte(unsigned char *data)
-{	
-	unsigned char recv_data[4] = {0};
+{		
 	unsigned char error = 0;
 	
 	error = nrf_drv_spi_transfer(&spi, (const unsigned char *)data, 4, NULL, 0);
+	
 	if(error != 0)
 	{
 		SEGGER_RTT_printf(0,"SPI operation error %d \r\n", error);
@@ -292,13 +292,17 @@ static void afe4403Reset(void)
 	
 	nrf_gpio_pin_set(AFE_RESETZ);
 	
-//	if(nrf_gpio_pin_read(AFE_DIAG_END) == 1)
-//	{
-//		unsigned int Diag_value = 0;
-//		Diag_value = readDiagnostics();
-//		SEGGER_RTT_printf(0, "Diag_value: 0x%x\r\n", (Diag_value));
-
-//	}
+	while(1)
+	{
+		if(nrf_gpio_pin_read(AFE_DIAG_END) == 1)
+		{
+			unsigned int Diag_value = 0;
+			
+			Diag_value = readDiagnostics();
+			SEGGER_RTT_printf(0, "Diag_value: 0x%x\r\n", (Diag_value));
+			break;
+		}
+	}
 }
 
 /***************************************************************************************************
@@ -426,11 +430,12 @@ static void afe4403DefaultRegInit()
   writeRegister((unsigned char)CONTROL1, AFE44xx_Current_Register_Settings[30]);           //0x1E
   
 
-  writeRegister((unsigned char)CONTROL3, 0);           //0x31
+  writeRegister((unsigned char)CONTROL3, 2);           //0x31     4∑÷∆µ
   writeRegister((unsigned char)PDNCYCLESTC, 0);        //0x32
   writeRegister((unsigned char)PDNCYCLEENDC, 0);       //0x33
 
   enableRead();
+  
 }
 
 /***************************************************************************************************
@@ -451,13 +456,9 @@ void afe4403Init(void)
     
     enableWrite();
   
-//	afe4403DefaultRegInit();
-	
-    writeRegister(0x01,0x00123456);
+	afe4403DefaultRegInit();
 	
     enableRead();
-	
-	int value = 0;
-	value = readRegister(0x01);
-	SEGGER_RTT_printf(0,"value : 0x%04x \r\n",value);	
+
+	SEGGER_RTT_printf(0, "control3 value : 0x%08x \r\n" , readRegister(0x31));
 }

@@ -37,29 +37,34 @@ void app_util_enable_irq(void)
 void app_util_critical_region_enter(uint8_t *p_nested)
 {
 #if __CORTEX_M == (0x04U)
-    ASSERT(APP_LEVEL_PRIVILEGED == privilege_level_get())
+    ASSERT(APP_LEVEL_PRIVILEGED == privilege_level_get())	
 #endif
 
+	
 #if defined(SOFTDEVICE_PRESENT)
     /* return value can be safely ignored */
     (void) sd_nvic_critical_region_enter(p_nested);
 #else
-    app_util_disable_irq();
-#endif
+    app_util_disable_irq();	
+	
+#endif	
 }
 
 void app_util_critical_region_exit(uint8_t nested)
-{
+{	
 #if __CORTEX_M == (0x04U)
+
     ASSERT(APP_LEVEL_PRIVILEGED == privilege_level_get())
 #endif
-
-#if defined(SOFTDEVICE_PRESENT)
+	
+#if defined(SOFTDEVICE_PRESENT)	
     /* return value can be safely ignored */
     (void) sd_nvic_critical_region_exit(nested);
 #else
     app_util_enable_irq();
+	
 #endif
+	
 }
 
 

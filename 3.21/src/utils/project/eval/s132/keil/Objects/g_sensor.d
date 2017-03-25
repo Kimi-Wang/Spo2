@@ -31,3 +31,4 @@
 .\objects\g_sensor.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
 .\objects\g_sensor.o: ..\..\..\..\..\..\components\libraries\util\nrf_assert.h
 .\objects\g_sensor.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
+.\objects\g_sensor.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

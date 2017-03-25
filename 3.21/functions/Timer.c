@@ -91,6 +91,7 @@ void timerInit(void)
          &timer_ms, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
 
     nrf_drv_timer_enable(&timer_ms);
+	
 }
 
 /***************************************************************************************************

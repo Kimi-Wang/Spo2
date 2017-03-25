@@ -27,3 +27,4 @@
 .\objects\retarget.o: ..\..\..\..\..\..\components\libraries\util\sdk_errors.h
 .\objects\retarget.o: ..\..\..\..\..\..\components\libraries\util\nordic_common.h
 .\objects\retarget.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\retarget.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

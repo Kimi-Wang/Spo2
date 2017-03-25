@@ -32,4 +32,5 @@
 .\objects\nrf_drv_twi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_svc.h
 .\objects\nrf_drv_twi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_error_soc.h
 .\objects\nrf_drv_twi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
+.\objects\nrf_drv_twi.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\nrf_drv_twi.o: ..\..\..\..\..\..\components\drivers_nrf\delay\nrf_delay.h

@@ -59,6 +59,7 @@
 .\objects\commandhandle.o: ..\..\..\..\..\..\components\libraries\util\app_util_platform.h
 .\objects\commandhandle.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
 .\objects\commandhandle.o: ..\..\..\..\..\..\components\libraries\util\nrf_assert.h
+.\objects\commandhandle.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\commandhandle.o: ..\..\..\..\..\bsp\bsp.h
 .\objects\commandhandle.o: ..\..\..\..\..\bsp\boards.h
 .\objects\commandhandle.o: ..\..\..\..\..\bsp\pca10040.h

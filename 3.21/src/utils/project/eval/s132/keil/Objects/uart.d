@@ -27,6 +27,7 @@
 .\objects\uart.o: ..\..\..\..\..\..\components\libraries\util\sdk_errors.h
 .\objects\uart.o: ..\..\..\..\..\..\components\libraries\util\nordic_common.h
 .\objects\uart.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\uart.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\uart.o: ..\..\..\..\..\bsp\bsp.h
 .\objects\uart.o: ..\..\..\..\..\bsp\boards.h
 .\objects\uart.o: ..\..\..\..\..\..\components\drivers_nrf\hal\nrf_gpio.h

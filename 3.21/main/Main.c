@@ -30,10 +30,10 @@ void initSystem(void)
 
 	lcdInit();
 //    app_sched_event_put(&device_id_set,sizeof(device_id_set),flashInit);
-//	G_sensorInit();
-//    keyInit();
+	G_sensorInit();
+//  keyInit();
 
-//    rtcInit();
+//  rtcInit();
 
 }
 

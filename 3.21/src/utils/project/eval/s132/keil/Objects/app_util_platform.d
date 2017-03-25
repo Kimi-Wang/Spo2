@@ -25,3 +25,4 @@
 .\objects\app_util_platform.o: ..\..\..\..\..\..\components\libraries\util\sdk_errors.h
 .\objects\app_util_platform.o: ..\..\..\..\..\..\components\libraries\util\nordic_common.h
 .\objects\app_util_platform.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\app_util_platform.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

@@ -163,7 +163,7 @@ typedef struct
     .irq_priority = SPI_DEFAULT_CONFIG_IRQ_PRIORITY,         \
     .orc          = 0xFF,                                    \
     .frequency    = NRF_DRV_SPI_FREQ_1M,                     \
-    .mode         = /*NRF_DRV_SPI_MODE_0*/NRF_DRV_SPI_MODE_3,\
+    .mode         = /*NRF_DRV_SPI_MODE_0*/NRF_DRV_SPI_MODE_0,\
     .bit_order    = NRF_DRV_SPI_BIT_ORDER_MSB_FIRST,         \
 }
 

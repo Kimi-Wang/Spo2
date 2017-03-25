@@ -31,3 +31,4 @@
 .\objects\app_mailbox.o: ..\..\..\..\..\..\components\libraries\util\app_error.h
 .\objects\app_mailbox.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\app_mailbox.o: ..\..\..\..\..\..\components\libraries\util\app_error_weak.h
+.\objects\app_mailbox.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h

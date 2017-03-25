@@ -35,6 +35,7 @@
 .\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_svc.h
 .\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_error_soc.h
 .\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\softdevice\s132\headers\nrf_nvic.h
+.\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\RTT\SEGGER_RTT.h
 .\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\libraries\log\nrf_log.h
 .\objects\nrf_drv_spi.o: ..\..\..\..\..\..\components\libraries\log\src\nrf_log_internal.h
 .\objects\nrf_drv_spi.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h

@@ -11,6 +11,7 @@
 ".\objects\uart.o"
 ".\objects\commandhandle.o"
 ".\objects\g_sensor.o"
+".\objects\sleep.o"
 ".\objects\bsp.o"
 ".\objects\bsp_btn_ble.o"
 ".\objects\app_button.o"

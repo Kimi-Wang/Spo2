@@ -188,7 +188,6 @@ void nrf_drv_common_per_res_release(void const * p_per_base)
     }
     else
 #endif
-
     {}
 }
 
